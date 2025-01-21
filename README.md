@@ -2,6 +2,7 @@
 a real-time chat room application using JavaScript and WebSockets involves both client-side and server-side code
 
 How It Works:
+
 WebSocket connection: The client (browser) establishes a WebSocket connection to the server.
 
 Broadcasting messages: When a client sends a message, the server broadcasts it to all connected clients.
