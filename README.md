@@ -11,5 +11,5 @@ Real-time updates: All clients receive messages in real-time without the need to
 
 User name assignment: All clients receive a unique user name
 
-![Screenshot](/ScreenShot1.png)
-![Screenshot](/ScreenShot2.png)
+![Screenshot](ScreenShot 1.png)
+![Screenshot](ScreenShot 2.png)
