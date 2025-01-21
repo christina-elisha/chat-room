@@ -1,5 +1,6 @@
 # chat-room
 a real-time chat room application using JavaScript and WebSockets involves both client-side and server-side code
+improved UI
 
 How It Works:
 
@@ -11,5 +12,6 @@ Real-time updates: All clients receive messages in real-time without the need to
 
 User name assignment: All clients receive a unique user name
 
-![Screenshot](ScreenShot 1.png)
-![Screenshot](ScreenShot 2.png)
+
+![demo](ScreenShot 1.png)
+![demo](ScreenShot 2.png)
