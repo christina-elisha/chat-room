@@ -1,1 +1,160 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat-Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #messages {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      overflow-y: scroll;
+      background-color: #f0f0f0;
+      margin-bottom: 10px;
+    }
+    
+    #heading {
+        text-align: center;
+    }
+      
+    .messageElement {
+        display: flex;
+        padding: 5px;
+    }
+      
+    .name {
+      padding: 5px;
+      font-weight: 100;
+      font-style: italic;
+      color: #4CAF50;
+    }
+      
+    .chat {
+        padding: 5px;
+        overflow-y: scroll;
+        background-color: #4CAF50;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    #input-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #f0f0f0;
+    }
+
+    button, #heading {
+      width: 15%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div id="heading">
+      <em>Let's Chat</em>
+  </div>
+  <div id="messages"></div>
+
+  <div id="input-container">
+    <input type="text" id="messageInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    // Connect to WebSocket server
+    const socket = new WebSocket('ws://localhost:3000');
+    // generate a random user name
+    function generateSimpleRandomString(length) {
+      return Math.random().toString(36).substr(2, length);
+    }
+    const randomName = generateSimpleRandomString(6);
+    
+    // adjust heading
+    const heading = document.getElementById("heading");
+    const em = document.createElement('em');
+    em.textContent = randomName;
+    heading.appendChild(em);
+    
+    // Handle WebSocket messages
+    socket.addEventListener('message', function (event) {
+      const messagesDiv = document.getElementById('messages');
+      const nameElement = document.createElement('div');
+      const chatElement = document.createElement('div');
+      const messageElement = document.createElement('div');
+      
+      const blob = event.data;  // The Blob object
+      const reader = new FileReader();
+
+      reader.onloadend = function() {
+          const text = reader.result;  // This will be the string content of the Blob
+          let index = text.indexOf(":");
+          let firstPart = text.slice(0, index);
+          let secondPart = text.slice(index + 1);
+          nameElement.textContent = firstPart;
+          nameElement.className = "name";
+          chatElement.textContent = secondPart;
+          chatElement.className = "chat";
+          messageElement.className = "messageElement";
+          messageElement.appendChild(nameElement);
+          messageElement.appendChild(chatElement);
+        };
+      reader.readAsText(blob);  // Read the Blob as text
+      
+      messagesDiv.appendChild(messageElement);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    });
+
+    // Send message to WebSocket server
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+      
+      if (message) {
+        socket.send(randomName + ": " + message); // Send the message to the server
+        messageInput.value = ''; // Clear the input field
+      }
+    }
+
+    // Handle "Enter" key press to send message
+    document.getElementById('messageInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
+
+</body>
+</html>
 
