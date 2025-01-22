@@ -1,4 +1,4 @@
-# chat-room, implemented in Javascript
+# chat-room in Javascript
 a real-time chat room application using JavaScript and WebSockets involves both client-side and server-side code
 improved UI
 # Node.js  # express.js  # websocket.js
