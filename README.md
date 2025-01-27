@@ -14,5 +14,5 @@ Real-time updates: All clients receive messages in real-time without the need to
 User name assignment: All clients receive a unique user name
 
 
-![demo](ScreenShot 1.png)
+![demo](https://github.com/christina-elisha/chat-room/blob/main/ScreenShot%201.png)
 ![demo](ScreenShot 2.png)
