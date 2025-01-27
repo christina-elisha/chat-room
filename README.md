@@ -1,4 +1,4 @@
-# chat-room in Javascript
+# chat-room in Node.js
 chat room with WebSockets,
 client-side, server-side code
 
