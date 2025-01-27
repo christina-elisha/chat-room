@@ -2,11 +2,12 @@
 chat room with WebSockets,
 client-side, server-side code
 
-# Node.js  # express.js  # websocket.js
 How It Works:
 
-% node server.js
-open a browser to localhost:/3000
+# Node.js  # express.js  # websocket.js package installed
+
+# % node server.js
+# open a browser to localhost:/3000
 
 WebSocket connection: The client (browser) establishes a WebSocket connection to the server.
 
