@@ -1,7 +1,6 @@
 # chat-room in Javascript
-improved UI, real-time chat room, 
-JavaScript and WebSockets 
-client-side and server-side code
+real-time chat room with WebSockets 
+client-side, server-side code
 
 # Node.js  # express.js  # websocket.js
 How It Works:
