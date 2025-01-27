@@ -6,6 +6,7 @@ client-side, server-side code
 How It Works:
 
 % node server.js
+open a browser to localhost:/3000
 
 WebSocket connection: The client (browser) establishes a WebSocket connection to the server.
 
